@@ -14,7 +14,7 @@ class Image(models.Model):
 
     def save(self, *args, **kwargs):
         try:
-            img = load_img(self.picture, target_size=(299,299))
+            img = load_img(self.picture.path, target_size=(299,299))
             img_arry = img_to_array(img)
             to_pred = np.expand_dims(img_arry, axis=0) #(1, 299, 299, 3)
             prep = preprocess_input(to_pred)
